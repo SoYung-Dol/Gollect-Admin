@@ -11,14 +11,14 @@ def main():
 def show_requests():
 	res = requests.get('http://106.10.54.174/requests').json()
 	if res['result'] != 'success':
-		return render_template("error.html", err=res['result'])
+		return render_template("error.html", error_msg=res['result'])
 	return render_template("request_list.html", requests=res['requests'])
 
 @app.route('/requests/<request_id>')
 def show_request(request_id):
 	res = requests.get('http://106.10.54.174/requests/' + request_id).json()
 	if res['result'] != 'success':
-		return render_template("error.html", err=res['result'])
+		return render_template("error.html", error_msg=res['result'])
 	return render_template("request_post.html", request_id=res['request']['request_id'], title=res['request']['title'], user_id=res['request']['user_id'], content=res['request']['content'])
 
 if __name__ == '__main__':

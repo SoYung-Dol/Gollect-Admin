@@ -37,6 +37,7 @@
 	          <th style="width: 10%">#</th>
 	          <th style="width: 60%">요청 제목</th>
 	          <th style="width: 30%">신청자</th>
+	          <!-- <th style="width: 15%"></th> -->
 	        </tr>
 	      </thead>
 	      <tbody>
@@ -47,6 +48,7 @@
 	  		  		document.write('<td>' + request.request_id + '</td>');
 	  		  		document.write('<td>' + '<a href=\'/requests\/' + request.request_id + '\'>' + request.title + '</a>' + '</td>');
 	  		  		document.write('<td>' + request.user_id + '</td>');
+	  		  		// document.write('<td>' + '<button type="button" ' + 'id="btn-delete-' + request.request_id + '" class="btn btn-outline-danger btn-sm">삭제</button>' + '</td>')
 	  		  		document.write('</tr>');
 	  		  	}
 	      	</script>
