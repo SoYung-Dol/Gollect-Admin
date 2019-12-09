@@ -21,5 +21,12 @@ def show_request(request_id):
 		return render_template("error.html", error_msg=res['result'])
 	return render_template("request_post.html", request_id=res['request']['request_id'], title=res['request']['title'], user_id=res['request']['user_id'], content=res['request']['content'])
 
+@app.route('/notices')
+def show_notices():
+	res = requests.get('http://106.10.54.174/notices').json()
+	if res['result'] != 'success':
+		return render_template("error.html", error_msg=res['result'])
+	return render_template("notice_list.html", notices=res['notices'])
+
 if __name__ == '__main__':
 	app.run(host="0.0.0.0", port=8082, debug=True)
