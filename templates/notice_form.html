@@ -5,9 +5,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>공지사항 목록</title>
-
-    <script src="/static/js/include_html.js"></script>
+    <title>공지사항 등록</title>
   </head>
 
   <body>
@@ -32,32 +30,18 @@
 		
 		<div class="container">
 			<div style="text-align: center; margin: 20px;">
-				<h2 style="display: inline-block;"> 공지사항 목록 </h2>
-				<a href='/notice_form'>
-	    		<button type="button" class="btn btn-outline-info" style="margin: 0 15 10;">공지 작성</button>
-	    	</a>
+				<h2 style="display: inline-block;"> 공지사항 등록 </h2>
 			</div>
 
-	    <table class="table table-hover">
-	      <thead>
-	        <tr>
-	          <th style="width: 15%">#</th>
-	          <th style="width: 85%">공지사항 제목</th>
-	        </tr>
-	      </thead>
-	      <tbody>
-	      	<script type="text/javascript">
-	  		  	var notices = {{ notices|tojson|safe }};
-	  		  	for (var notice of notices) {
-	  		  		document.write('<tr>');
-	  		  		document.write('<td>' + notice.notice_id + '</td>');
-	  		  		document.write('<td>' + '<a href=\'/notices\/' + notice.notice_id + '\'>' + notice.title + '</a>' + '</td>');
-	  		  		document.write('</tr>');
-	  		  	}
-	      	</script>
-	      </tbody>
-	    </table>
-	  </div>
+			<form method="post" action="{{ url_for('create_notice') }}">
+				<input type="text" class="form-control" placeholder="공지 제목" name="noticeTitle">
+				<textarea class="form-control" placeholder="공지 내용" name="noticeContent" style="height: 350px; margin: 10 0;"></textarea>
+				<div style="text-align: center;">
+					<input type="submit" class="btn btn-outline-info" value="공지 등록">
+				</div>
+		  </form>
+
+		</div>
 
 		<hr>
 		<div class="footer text-center" id="footer">

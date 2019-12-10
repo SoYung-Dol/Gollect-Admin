@@ -12,16 +12,16 @@
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
-        <a class="navbar-brand" href="#">Gollect</a>
+        <a class="navbar-brand" href="/">Gollect</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
               <a class="nav-link" href="/requests">플랫폼 요청</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="/notices">공지사항<span class="sr-only">(current)</span></a>
             </li>
           </ul>
@@ -35,7 +35,9 @@
         <hr>
         <p>{{ content }}</p>
         <div style="text-align: center;">
-          <button type="button" class="btn btn-outline-danger" onclick="delete_request({{notice_id}})">공지 삭제</button>
+          <a href="{{ url_for('delete_notice', notice_id=notice_id) }}">
+            <button type="button" class="btn btn-outline-danger" onclick="delete_notice({{notice_id}})">공지 삭제</button>
+          </a>
         </div>
       </div>
     </div>
